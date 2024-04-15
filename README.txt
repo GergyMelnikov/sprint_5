@@ -1,0 +1,1 @@
+Аккаунт для тестирования авторизации: `Account_for_sign_in_testing@yaya.ru`:`123123`
