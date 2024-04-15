@@ -23,5 +23,3 @@ def generate_email():
     generated_email = f'{name}{domain}'
     return generated_email
 
-print(generate_email())
-print(generate_password(7))
