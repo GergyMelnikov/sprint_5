@@ -10,7 +10,6 @@ from generators.email_and_password_generators import generate_password
 import time
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
@@ -31,7 +30,7 @@ driver.find_element(By.CSS_SELECTOR, 'button[class="button_button__33qZ0 button_
 try:
     assert '/login' in driver.current_url
 except AssertionError:
-    time.sleep(0.5)
+    time.sleep(0.5) # жду редирект на страницу авторизации
     assert '/login' in driver.current_url
 
 wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/main/div/form/fieldset[1]/div/div/input'))).send_keys(email)
