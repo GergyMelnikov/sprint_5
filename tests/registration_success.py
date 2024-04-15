@@ -31,7 +31,7 @@ driver.find_element(By.CSS_SELECTOR, 'button[class="button_button__33qZ0 button_
 try:
     assert '/login' in driver.current_url
 except AssertionError:
-    time.sleep(0.5)
+    time.sleep(0.5) # жду редирект на страницу авторизации
     assert '/login' in driver.current_url
 
 wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/main/div/form/fieldset[1]/div/div/input'))).send_keys(email)
