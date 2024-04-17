@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from locators.locators import Login_form_locators
 from locators.locators import Header_locators
+from locators.locators import Constructor_locators
+import time
 
 
 driver = webdriver.Chrome()
@@ -23,6 +25,12 @@ driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
 
 wait.until(EC.presence_of_element_located(Header_locators.CONSTRUCROR_LINK)).click()
+
+assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
+
+wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
+
+wait.until(EC.element_to_be_clickable(Header_locators.LOGO_LINK)).click()
 
 assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
 

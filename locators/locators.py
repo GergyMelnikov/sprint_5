@@ -10,6 +10,7 @@ class Login_form_locators():
 class Header_locators():
     PERSONAL_ACCOUNT_LINK = (By.XPATH, '/html/body/div/div/header/nav/a/p') # Ссылка для перехода в личный кабинет, в хедере
     CONSTRUCROR_LINK = (By.XPATH, '/html/body/div/div/header/nav/ul/li[1]/a/p') # Кнопка для перехода в конструктор в хедере
+    LOGO_LINK = (By.CSS_SELECTOR, 'div[class="AppHeader_header__logo__2D0X2"]') # Логотип бургеров в хедере
 
 
 class Personal_account_locators():
