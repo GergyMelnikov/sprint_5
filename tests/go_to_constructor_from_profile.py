@@ -7,8 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from locators.locators import Login_form_locators
 from locators.locators import Header_locators
-from locators.locators import Constructor_locators
-import time
 
 
 driver = webdriver.Chrome()
