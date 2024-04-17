@@ -1,10 +1,14 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from locators import Login_form_locators
-from locators import Personal_account_locators
-from locators import Header_locators
+from locators.locators import Login_form_locators
+from locators.locators import Personal_account_locators
+from locators.locators import Header_locators
+
 
 driver = webdriver.Chrome()
 wait = WebDriverWait(driver, 10)

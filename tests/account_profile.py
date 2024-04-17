@@ -1,10 +1,13 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from locators import Login_form_locators
-from locators import Header_locators
-from locators import Personal_account_locators
+from locators.locators import Login_form_locators
+from locators.locators import Header_locators
+from locators.locators import Personal_account_locators
 
 
 driver = webdriver.Chrome()
@@ -18,7 +21,7 @@ wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send
 driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
 driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
-wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUN_LINK)).click()
+wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
 
 wait.until(EC.presence_of_element_located(Personal_account_locators.EMAIL_FIELD))
 
