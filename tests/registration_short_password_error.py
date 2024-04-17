@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from locators import Registration_form_locators
 
 
 driver = webdriver.Chrome()
@@ -16,8 +17,8 @@ driver.get('https://stellarburgers.nomoreparties.site/register')
 email = generate_email()
 password = generate_password(5)
 
-wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="password"]'))).send_keys(password)
-driver.find_element(By.CSS_SELECTOR, 'button[class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]').click()
+wait.until(EC.presence_of_element_located(Registration_form_locators.PASSWORD_FIELD)).send_keys(password)
+driver.find_element(*Registration_form_locators.SUBMIT_BUTTON).click()
 
 recieved_error_text = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'p[class="input__error text_type_main-default"]'))).text
 
