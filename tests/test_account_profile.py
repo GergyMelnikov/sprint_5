@@ -11,7 +11,7 @@ import pytest
 class Test_jump_to_account_from_main():
     def test_transition_to_account_profile_true(self, browser):
         driver, wait = browser
-        driver.get('https://stellarburgers.nomoreparties.site/login')
+        driver.get(Login_form_locators.URL)
         email = 'Account_for_sign_in_testing@yaya.ru'
         password = '123123'
 
@@ -23,4 +23,4 @@ class Test_jump_to_account_from_main():
 
         wait.until(EC.presence_of_element_located(Personal_account_locators.EMAIL_FIELD))
 
-        assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+        assert driver.current_url == Personal_account_locators.URL

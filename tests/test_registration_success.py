@@ -17,7 +17,7 @@ import pytest
 class Test_registration():
     def test_success_registration_true(self, browser):
         driver, wait = browser
-        driver.get('https://stellarburgers.nomoreparties.site/register')
+        driver.get(Registration_form_locators.URL)
 
         email = generate_email()
         name = email.split('_')[0]
@@ -48,7 +48,7 @@ class Test_registration():
 
     def test_short_password_error_visible_true(self, browser):
         driver, wait = browser
-        driver.get('https://stellarburgers.nomoreparties.site/register')
+        driver.get(Registration_form_locators.URL)
 
         password = generate_password(5)
 
@@ -57,5 +57,5 @@ class Test_registration():
 
         recieved_error_text = wait.until(EC.visibility_of_element_located(Registration_form_locators.PASSWORD_ERROR)).text
 
-        assert driver.current_url == 'https://stellarburgers.nomoreparties.site/register'
+        assert driver.current_url == Registration_form_locators.URL
         assert recieved_error_text == 'Некорректный пароль'
