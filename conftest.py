@@ -11,3 +11,11 @@ def browser():
     wait = WebDriverWait(driver, 10)
     yield driver, wait
     driver.quit()
+
+
+@pytest.fixture
+def auth_data():
+    return {
+        'email': 'Account_for_sign_in_testing@yaya.ru',
+        'password': '123123'
+    }

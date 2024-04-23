@@ -7,15 +7,15 @@ from locators.locators import Header_locators
 from locators.locators import Personal_account_locators
 import pytest
 
+
 class Test_jump_to_account_from_main():
     def test_transition_to_account_profile_true(self, browser):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/login')
-
         email = 'Account_for_sign_in_testing@yaya.ru'
         password = '123123'
 
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
+        wait.until(EC.element_to_be_clickable(Login_form_locators.EMAIL_FIELD)).send_keys(email)
         driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 

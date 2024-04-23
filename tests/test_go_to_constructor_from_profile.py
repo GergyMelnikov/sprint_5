@@ -7,15 +7,12 @@ from locators.locators import Header_locators
 import pytest
 
 class Test_jump_from_account_to_constructor():
-    def test_jump_to_constructor_from_profile_on_logo_true(self, browser):
+    def test_jump_to_constructor_from_profile_on_logo_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
-
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
         wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
@@ -25,15 +22,12 @@ class Test_jump_from_account_to_constructor():
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
 
 
-    def test_jump_to_constructor_from_profile_on_constructor_link_true(self, browser):
+    def test_jump_to_constructor_from_profile_on_constructor_link_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
-
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
         wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()

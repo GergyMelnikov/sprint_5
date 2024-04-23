@@ -8,36 +8,30 @@ from locators.locators import Main_page_locators, Login_form_locators, Personal_
 
 
 class Test_sign_in():
-    def test_sign_in_from_forgot_password_form_true(self, browser):
+    def test_sign_in_from_forgot_password_form_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/forgot-password')
 
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
-
         wait.until(EC.element_to_be_clickable(Forgot_password_form_locators.SIGN_IN_LINK)).click()
 
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
-        wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/header/nav/a/p'))).click()
-        email_field = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/main/div/div/div/ul/li[2]/div/div/input'))).get_attribute('value')
+        wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
+        email_field = wait.until(EC.presence_of_element_located(Personal_account_locators.EMAIL_FIELD)).get_attribute('value')
 
         assert email_field == 'account_for_sign_in_testing@yaya.ru'
 
 
-    def test_sign_in_from_registration_form_true(self, browser):
+    def test_sign_in_from_registration_form_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/register')
 
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
-
         wait.until(EC.element_to_be_clickable(Forgot_password_form_locators.SIGN_IN_LINK)).click()
 
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
         wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
@@ -46,17 +40,14 @@ class Test_sign_in():
         assert email_field == 'account_for_sign_in_testing@yaya.ru'
 
 
-    def test_sign_in_from_main_page_true(self, browser):
+    def test_sign_in_from_main_page_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/')
-
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
 
         wait.until(EC.element_to_be_clickable(Main_page_locators.SIGN_IN_BUTTON)).click()
 
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
         wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
@@ -65,17 +56,14 @@ class Test_sign_in():
         assert email_field == 'account_for_sign_in_testing@yaya.ru'
 
 
-    def test_sign_in_from_personal_account_link_true(self, browser):
+    def test_sign_in_from_personal_account_link_true(self, browser, auth_data):
         driver, wait = browser
         driver.get('https://stellarburgers.nomoreparties.site/')
 
-        email = 'Account_for_sign_in_testing@yaya.ru'
-        password = '123123'
-
         wait.until(EC.element_to_be_clickable(Header_locators.PERSONAL_ACCOUNT_LINK)).click()
 
-        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(email)
-        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(password)
+        wait.until(EC.presence_of_element_located(Login_form_locators.EMAIL_FIELD)).send_keys(auth_data['email'])
+        driver.find_element(*Login_form_locators.PASSWORD_FIELD).send_keys(auth_data['password'])
         driver.find_element(*Login_form_locators.SUBMIT_BUTTON).click()
 
         wait.until(EC.presence_of_element_located(Header_locators.PERSONAL_ACCOUNT_LINK)).click()

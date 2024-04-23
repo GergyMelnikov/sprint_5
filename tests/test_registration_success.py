@@ -55,7 +55,7 @@ class Test_registration():
         wait.until(EC.presence_of_element_located(Registration_form_locators.PASSWORD_FIELD)).send_keys(password)
         driver.find_element(*Registration_form_locators.SUBMIT_BUTTON).click()
 
-        recieved_error_text = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'p[class="input__error text_type_main-default"]'))).text
+        recieved_error_text = wait.until(EC.visibility_of_element_located(Registration_form_locators.PASSWORD_ERROR)).text
 
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/register'
         assert recieved_error_text == 'Некорректный пароль'
